@@ -1,0 +1,31 @@
+.modal-header {
+    background-color: #9c27b0;
+    font-family: Arial;
+    font-size: 24px;
+    color: #ffffff;
+    padding: 10px 22px 2px 18px;
+
+}
+
+.modal-header .modal-title { 
+    font-size: 20px;
+}
+
+.modal-header .close {
+    font-size: 36px;
+    color: #fff;
+    margin-top: -16px;
+    opacity: 1;
+}
+
+.btn-submit-cart {
+    width: 200px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #e91e63;
+    background-size: cover;
+    font-family: Arial;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+}
