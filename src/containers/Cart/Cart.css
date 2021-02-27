@@ -1,0 +1,40 @@
+.cart-container table thead.thead-dark th {
+    background-color: #616161;
+    border: none;
+    font-size: 16px;
+    font-weight: normal;
+}
+.cart-container table tbody {
+    background-color: #fff;
+ }
+.cart-container table tbody tr td {
+ background-color: #ffffff;
+}
+
+.cart-container .product-image {
+    max-width: 80px;
+    max-height: 100px;
+}
+
+.cart-container h4.product-name,
+.cart-container h4.product-price {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cart-container h4.product-price {
+    color: #ff0000;
+}
+
+.cart-container .input-qty {
+    width: 35px;
+    height: 35px;
+    padding: 0px 8px;
+    border: 1px solid #8c8c8c;
+    border-radius: 4px;
+    background-color: #ffffff;
+    background-size: cover;
+    font-family: Arial;
+    font-size: 14px;
+    color: #121212;
+}

@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchProduct.css';
 import CartIcon from '../../assets/images/cart-icon.png';
+import AppContext from '../../context/app-context';
 
 const SearchProduct = (props) => {
+
+   const [cartShow, setCartShow] = useState(false);
+
+   const showCart = () => {
+        setCartShow(true);
+        props.viewCart();
+   }
 
     return (
 
@@ -20,18 +28,21 @@ const SearchProduct = (props) => {
             </div>
             <div className="col-md-1 col-sm-1 col-2">
                 <img className="carticon" src={CartIcon} alt="cart icon"/>
-                <span className="item-count">5</span>
+                <span className="item-count">{props.cartSize}</span>
             </div>
             <div className="col-md-4 col-sm-4 col-4 text-left">
-                <button className="btn btn mt-1 btn-view-cart"
-                onClick={props.viewCart}>
+            <AppContext.Provider value={{isCartShown: cartShow}}>
+               <button className="btn btn mt-1 btn-view-cart"
+                onClick={showCart}>
                     VIEW CART
                 </button>
+            </AppContext.Provider>    
+             
             </div>
-                        
-        </div>
               
-       
+                 
+        </div>
+        
 
     );
 }
