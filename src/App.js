@@ -1,4 +1,4 @@
-import  { useState, useRef } from 'react';
+import  React, { useState } from 'react';
 import './App.css';
 import SearchUser from './components/SearchUser/SearchUser';
 import SearchProduct from './components/SearchProduct/SearchProduct';
@@ -10,26 +10,53 @@ import OrderForm from './components/OrderForm/OrderForm';
 function App() {
 
   const [isModalVisible, setShowModal] = useState(false);
+  const [isSuccessModalVisible, setSuccessShowModal] = useState(false);
   const [isCheckoutDone, setCheckoutDone] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [cartSize, setCartSize] = useState(0);
-  const orderFormRef = useRef();
+  const [modalTitle, setModalTitle] = useState('');
+  // const [getRef, setRef] =  useDynamicRefs();
+  // let orderFormRef = useRef();
+  // let modalPopupRef = useRef();
+  
+  // useEffect(() => {
+  //   if (isCheckoutDone) {
+  // //    orderFormRef = getRef('orderForm');
+  //     console.log('orderFormRef', orderFormRef.current);
+  //     console.log(modalPopupRef.current)
+  //     orderFormRef.current = modalPopupRef.current.props.children;
+  //   }
+   
+  // }, [isCheckoutDone]);
+
+ 
 
   const showModal = () => {
+    setModalTitle('Review cart items');
     setShowModal(true);
   }
 
   const hideModal = () => {
+    setModalTitle('Review cart items');
     setShowModal(false);
+    setCheckoutDone(false);
+  }
+
+  const hideSuccessModal = () => {
+    setSuccessShowModal(false);
   }
 
   const cartCheckout = () => {
     console.log('Cart Checkout');
+    setModalTitle('Place Order');
     setCheckoutDone(true);
   }
 
-  const placeOrder = () => {
-    console.log('order placed', orderFormRef);
+  const placeOrder = (values) => {
+      setShowModal(false);
+      console.log('order placed', {...values, products: selectedProducts});
+      setSuccessShowModal(true);
+    //  window.location.reload();
   }
 
   const addToCart = (product) => {
@@ -79,11 +106,19 @@ function App() {
       </div>
       <ModalPopUp show={isModalVisible} 
       hide={hideModal} 
-      onCheckout={cartCheckout}
-      onOrderPlaced={placeOrder}>
+      title={modalTitle}
+      // ref={modalPopupRef}
+      >
         {
-         isCheckoutDone? <OrderForm ref={orderFormRef}/> :<Cart selectedProducts={selectedProducts}/>
+         isCheckoutDone? <OrderForm onOrderPlaced={placeOrder}/> :<Cart selectedProducts={selectedProducts}  onCheckout={cartCheckout}/>
         }
+      </ModalPopUp>
+
+      <ModalPopUp show={isSuccessModalVisible} 
+      hide={hideSuccessModal} 
+      // ref={modalPopupRef}
+      >
+       You have successfully placed order!!!
       </ModalPopUp>
 
     </div>

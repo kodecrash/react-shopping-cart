@@ -1,11 +1,18 @@
 import React,  { Component } from 'react';
 import Product from '../../components/Product/Product';
 import './Cart.css';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 class Cart extends Component {
 
     state = {
        cartItems: []
+    }
+
+    checkoutHandler()  {
+        this.setState({checkoutProcessed: true});
+        this.props.onCheckout();
     }
 
 
@@ -32,24 +39,30 @@ class Cart extends Component {
         }
        
         return (
-            <div className="row">
-                <div className="cart-container col-md-12">
-                    <div className="table-container">
-                    <table className="table" id="cartTable">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th width="75%">Products</th>
-                                <th>Qty</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { cartTemplate }
-                        </tbody>
-                    </table>
+            <>
+                <div className="row">
+                    <div className="cart-container col-md-12">
+                        <div className="table-container">
+                        <table className="table" id="cartTable">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th width="75%">Products</th>
+                                    <th>Qty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { cartTemplate }
+                            </tbody>
+                        </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+                <Modal.Footer>
+                   <Button variant="primary" className="btn btn-submit-cart" onClick={()=> this.checkoutHandler()}>
+                            Checkout
+                    </Button>
+                </Modal.Footer>
+            </>
         )
     }
 
