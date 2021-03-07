@@ -22,10 +22,10 @@ class SearchUser extends Component {
                     <div className="card panel-card text-left">
                         <div className="card-body">
                             <div className="card-text"><strong>Current User :</strong> <span
-                                    className="currentUser">Rahul Pandit Kulkarni
+                                    className="currentUser">John Mike
                                 </span></div>
-                            <div className="card-text"><strong>Address :</strong> <span className="userAddress">Kharadi,
-                                    Pune</span></div>
+                            <div className="card-text"><strong>Address :</strong> <span className="userAddress">205 Lane,
+                                    New York</span></div>
                         </div>
                     </div>
                 </div>
